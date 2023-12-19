@@ -5,10 +5,7 @@ from flask import (
     redirect,
     url_for,
     jsonify,
-    make_response,
-    current_app,
     flash,
-    session,
 )
 from flask_login import (
     LoginManager,
@@ -20,17 +17,13 @@ from flask_login import (
 )
 from pymongo import MongoClient
 from werkzeug.utils import secure_filename
-import requests
 import os
 import hashlib
 from datetime import datetime, timedelta
 from bson import ObjectId
 import jwt
-from reportlab.pdfgen import canvas
-from reportlab.lib.utils import ImageReader
 from os.path import join, dirname
 from dotenv import load_dotenv
-from babel.numbers import format_currency
 from functools import wraps
 
 
