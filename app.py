@@ -37,12 +37,15 @@ from functools import wraps
 app = Flask(__name__)
 # Atur folder untuk menyimpan file di direktori 'static'
 app.config["UPLOAD_FOLDER"] = "static/uploads"
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
-MONGODB_CONNECTION_STRING = (
-    "mongodb+srv://root:root@cluster1.m1kjn7v.mongodb.net/?retryWrites=true&w=majority"
-)
+MONGODB_CONNECTION_STRING = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
+
 client = MongoClient(MONGODB_CONNECTION_STRING)
-db = client.final_project
+
+db = client[DB_NAME]
 
 SECRET_KEY = "SPARTA"
 # # Memberikan SECRET_KEY
